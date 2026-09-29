@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "giganticmachines:block/redstone_port",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "giganticmachines:block/redstone_port"
+    },
+    "facing=south": {
+      "model": "giganticmachines:block/redstone_port",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "giganticmachines:block/redstone_port",
+      "y": 270
+    }
+  }
+}

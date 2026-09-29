@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "giganticmachines:iron_casing"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "R": {
+      "item": "minecraft:water_bucket"
+    }
+  },
+  "pattern": [
+    "ICI",
+    "CRC",
+    "ICI"
+  ],
+  "result": {
+    "item": "giganticmachines:hydroelectric_cascade"
+  },
+  "show_notification": true
+}

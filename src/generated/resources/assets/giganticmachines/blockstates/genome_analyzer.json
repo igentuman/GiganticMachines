@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "giganticmachines:block/genome_analyzer",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "giganticmachines:block/genome_analyzer"
+    },
+    "facing=south": {
+      "model": "giganticmachines:block/genome_analyzer",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "giganticmachines:block/genome_analyzer",
+      "y": 270
+    }
+  }
+}

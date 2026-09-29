@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "giganticmachines:block/hydroelectric_cascade",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "giganticmachines:block/hydroelectric_cascade"
+    },
+    "facing=south": {
+      "model": "giganticmachines:block/hydroelectric_cascade",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "giganticmachines:block/hydroelectric_cascade",
+      "y": 270
+    }
+  }
+}

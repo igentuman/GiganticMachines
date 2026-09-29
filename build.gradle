@@ -1,0 +1,216 @@
+buildscript {
+    repositories {
+        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+    }
+}
+
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'net.minecraftforge.gradle' version '[6.0.16,6.2)'
+}
+
+apply plugin: 'org.spongepowered.mixin'
+
+group = mod_group_id
+version = mod_version
+
+base {
+    archivesName = mod_id
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+}
+
+minecraft {
+
+    mappings channel: mapping_channel, version: mapping_version
+
+    copyIdeResources = true
+
+    // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+
+    runs {
+        // applies to all the run configs below
+        configureEach {
+            workingDirectory project.file('run')
+
+            property 'forge.logging.markers', 'REGISTRIES'
+
+
+            property 'forge.logging.console.level', 'debug'
+
+            mods {
+                "${mod_id}" {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        client {
+            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            property 'forge.enabledGameTestNamespaces', mod_id
+            args '--width', '1920', '--height', '1080'
+            jvmArg '-Xmx4G'
+        }
+
+        server {
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            property 'forge.enabledGameTestNamespaces', mod_id
+            args '--nogui'
+        }
+
+        gameTestServer {
+            property 'forge.enabledGameTestNamespaces', mod_id
+        }
+
+        data {
+            workingDirectory project.file('run-data')
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+        }
+    }
+}
+
+mixin {
+    add sourceSets.main, "${mod_id}.refmap.json"
+
+    config "${mod_id}.mixins.json"
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+repositories {
+    maven { url "https://minecraft.curseforge.com/api/maven/" }
+    maven { url "https://maven.blamejared.com" }
+    maven { url "https://jitpack.io" }
+    maven { url "https://www.cursemaven.com" }
+    maven { url "https://squiddev.cc/maven/" }
+    maven { url "https://maven.tterrag.com/" }
+    maven { url "https://modmaven.dev/" }
+    maven { url "https://maven.firstdarkdev.xyz/snapshots/" }
+    maven { url "https://maven.architectury.dev" }
+    maven { url "https://maven.saps.dev/minecraft" }
+    maven {
+        url "https://maven.latvian.dev/releases"
+        content {
+            includeGroup "dev.latvian.mods"
+            includeGroup "dev.latvian.apps"
+        }
+    }
+
+    maven {
+        url 'https://jitpack.io'
+        content {
+            includeGroup "com.github.rtyley"
+        }
+    }
+
+    maven {
+        name = 'GTCEu Maven'
+        url = 'https://maven.gtceu.com'
+        content {
+            includeGroup 'com.gregtechceu.gtceu'
+        }
+    }
+    maven { url = "https://maven.createmod.net" }
+}
+
+dependencies {
+
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+
+    implementation fg.deobf("curse.maven:guideme-1173950:7013686") {
+        transitive = false
+    }
+    runtimeOnly fg.deobf("curse.maven:construction-wand-399558:4684054")
+    implementation fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
+    compileOnly fg.deobf("curse.maven:emi-580555:5872526")
+    implementation fg.deobf("dev.engine-room.flywheel:flywheel-forge-${minecraft_version}:${flywheel_version}")
+    jarJar("dev.engine-room.flywheel:flywheel-forge-${minecraft_version}:${flywheel_version}") {
+        version {
+            strictly("[1.0,2.0)")
+            prefer("${flywheel_version}")
+        }
+    }
+    implementation fg.deobf("net.createmod.ponder:Ponder-Forge-${minecraft_version}:${ponder_version}")
+    jarJar("net.createmod.ponder:Ponder-Forge-${minecraft_version}:${ponder_version}") {
+        version {
+            strictly("[1.0,2.0)")
+            prefer("${ponder_version}")
+        }
+    }
+
+    runtimeOnly fg.deobf("curse.maven:spark-361579:4738952")
+    implementation fg.deobf("curse.maven:multi-builder-tool-827020:8291472")
+    runtimeOnly fg.deobf("curse.maven:ctm-267602:5983309")
+    compileOnly fg.deobf("mcjty.theoneprobe:theoneprobe:${top_version}:api") {
+        transitive = false
+    }
+    runtimeOnly fg.deobf("mcjty.theoneprobe:theoneprobe:${top_version}") {
+        transitive = false
+    }
+
+    implementation fg.deobf("dev.latvian.mods:kubejs-forge:${kubejs_version}"){
+        transitive = false
+    }
+    implementation fg.deobf("dev.latvian.mods:rhino-forge:${rhino_version}"){
+        transitive = false
+    }
+    implementation fg.deobf("dev.architectury:architectury-forge:${architectury_version}")
+    compileOnly fg.deobf("curse.maven:ftb-library-forge-404465:5282375")
+    compileOnly fg.deobf("curse.maven:ftb-teams-forge-404468:5267190")
+    compileOnly fg.deobf("curse.maven:ftb-chunks-forge-314906:5267364")
+    implementation fg.deobf("mekanism:Mekanism:${minecraft_version}-${mekanism_version}")
+    implementation fg.deobf("mekanism:Mekanism:${minecraft_version}-${mekanism_version}:generators")
+    compileOnly("cc.tweaked:cc-tweaked-${minecraft_version}-core-api:${cc_version}")
+    compileOnly(fg.deobf("cc.tweaked:cc-tweaked-${minecraft_version}-forge-api:${cc_version}"))
+    implementation fg.deobf("cc.tweaked:cc-tweaked-${minecraft_version}-forge:${cc_version}")
+
+    compileOnly fg.deobf("curse.maven:sedna-511276:${sedna_version}")
+    compileOnly fg.deobf("curse.maven:markdownmanual-502485:${md_version}")
+    compileOnly fg.deobf("curse.maven:oc2r-1037738:${oc2_version}")
+}
+
+tasks.named('processResources', ProcessResources).configure {
+    var replaceProperties = [minecraft_version   : minecraft_version, minecraft_version_range: minecraft_version_range,
+                             forge_version       : forge_version, forge_version_range: forge_version_range,
+                             loader_version_range: loader_version_range,
+                             mod_id              : mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+                             mod_authors         : mod_authors, mod_description: mod_description,]
+
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
+    }
+}
+
+tasks.named('jar', Jar).configure {
+    manifest {
+        attributes(["Specification-Title"     : mod_id,
+                    "Specification-Vendor"    : mod_authors,
+                    "Specification-Version"   : "1", // We are version 1 of ourselves
+                    "Implementation-Title"    : project.name,
+                    "Implementation-Version"  : project.jar.archiveVersion,
+                    "Implementation-Vendor"   : mod_authors,
+                    "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")])
+    }
+
+    // This is the preferred method to reobfuscate your jar file
+    finalizedBy 'reobfJar'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}

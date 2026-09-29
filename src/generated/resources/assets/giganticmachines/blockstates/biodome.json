@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "giganticmachines:block/biodome",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "giganticmachines:block/biodome"
+    },
+    "facing=south": {
+      "model": "giganticmachines:block/biodome",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "giganticmachines:block/biodome",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "values": [
+    "giganticmachines:item_input_port",
+    "giganticmachines:item_output_port",
+    "giganticmachines:fluid_input_port",
+    "giganticmachines:fluid_output_port",
+    "giganticmachines:energy_input_port",
+    "giganticmachines:redstone_port"
+  ]
+}

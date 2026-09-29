@@ -1,0 +1,23 @@
+{
+  "values": [
+    "giganticmachines:concrete",
+    "giganticmachines:factory_block",
+    "giganticmachines:iron_casing",
+    "giganticmachines:copper_casing",
+    "giganticmachines:bedrock_extractor",
+    "giganticmachines:titanic_crusher",
+    "giganticmachines:smelting_complex",
+    "giganticmachines:modular_foundry",
+    "giganticmachines:biodome",
+    "giganticmachines:replication_bioreactor",
+    "giganticmachines:hydroelectric_cascade",
+    "giganticmachines:genome_analyzer",
+    "giganticmachines:singularity_press",
+    "giganticmachines:item_input_port",
+    "giganticmachines:item_output_port",
+    "giganticmachines:fluid_input_port",
+    "giganticmachines:fluid_output_port",
+    "giganticmachines:energy_input_port",
+    "giganticmachines:redstone_port"
+  ]
+}

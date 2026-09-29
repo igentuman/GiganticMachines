@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "C": {
+      "item": "giganticmachines:concrete"
+    },
+    "M": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "pattern": [
+    "MMM",
+    "MCM",
+    "MMM"
+  ],
+  "result": {
+    "count": 4,
+    "item": "giganticmachines:copper_casing"
+  },
+  "show_notification": true
+}

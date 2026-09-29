@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "giganticmachines:block/singularity_press_controller_front",
+    "side": "giganticmachines:block/iron_casing",
+    "top": "giganticmachines:block/iron_casing"
+  }
+}

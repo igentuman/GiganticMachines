@@ -1,0 +1,7 @@
+// 1.20.1	2026-09-29T20:30:44.451661547	Tags for minecraft:block mod id giganticmachines
+9b04ab5a1774f5f2f8e83c3234c398272dbc9a98 data/giganticmachines/tags/blocks/casings.json
+9fc8d28ba42dee91a3c2febdb64d9651817b99e3 data/giganticmachines/tags/blocks/controllers.json
+4b5e55111bf0ff1fe2cc6a440768e88e28387279 data/giganticmachines/tags/blocks/ports.json
+94f51243304d6a6086edbd0c9a48a06ae78e7295 data/minecraft/tags/blocks/mineable/axe.json
+63ea7756903eb65ae0fe9da977770003c3e4b0fa data/minecraft/tags/blocks/mineable/pickaxe.json
+df26c04f6ec3d0d18d1bc7531fac515f98df7534 data/minecraft/tags/blocks/needs_stone_tool.json

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "giganticmachines:block/smelting_complex",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "giganticmachines:block/smelting_complex"
+    },
+    "facing=south": {
+      "model": "giganticmachines:block/smelting_complex",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "giganticmachines:block/smelting_complex",
+      "y": 270
+    }
+  }
+}
